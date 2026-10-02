@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nostr Remote Signer</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main>
+      <h1>Nostr Remote Signer</h1>
+
+      <section>
+        <h2>1. Import or Generate Key</h2>
+        <form id="import-form" autocomplete="off">
+          <label for="secret-input">nsec or 64-char hex</label>
+          <div class="row">
+            <input id="secret-input" name="secret" type="password" placeholder="nsec1... or hex..." spellcheck="false">
+            <button type="submit">Import Key</button>
+          </div>
+        </form>
+        <button id="generate-key" type="button">Generate New Key</button>
+      </section>
+
+      <section>
+        <h2>2. Public Identity</h2>
+        <p><strong>Pubkey:</strong> <span id="pubkey">Not loaded</span></p>
+        <p><strong>NPub:</strong> <span id="npub">Not loaded</span></p>
+      </section>
+
+      <section>
+        <h2>3. Start Signer</h2>
+        <label for="relay-input">Relay URL</label>
+        <div class="row">
+          <input id="relay-input" type="text" placeholder="wss://relay.nip46.com" spellcheck="false">
+          <button id="start-signer" type="button">Start Signer</button>
+          <button id="stop-signer" class="secondary" type="button">Stop</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Bunker URL</h2>
+        <div class="row">
+          <input id="bunker-url" type="text" readonly>
+          <button id="copy-bunker" type="button">Copy</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>5. Signer State</h2>
+        <p><span id="state-pill" class="pill">stopped</span></p>
+        <p id="state-detail" class="muted">Signer is stopped.</p>
+      </section>
+
+      <section>
+        <h2>6. Stacker News</h2>
+        <a class="link-button" href="https://stacker.news/signup?callbackUrl=https%3A%2F%2Fstacker.news%2F&type=nostr" target="_blank" rel="noopener noreferrer">Open Stacker News Nostr Login</a>
+      </section>
+
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
